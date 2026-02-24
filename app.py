@@ -4,6 +4,16 @@ import nltk
 import re
 from nltk.stem import WordNetLemmatizer
 
+import nltk
+
+@st.cache_resource
+def download_nltk_data():
+    nltk.download('punkt')
+    nltk.download('punkt_tab')
+    nltk.download('stopwords')
+
+download_nltk_data()
+
 # Download NLTK data
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -51,3 +61,4 @@ if st.button("Predict Sentiment"):
 
         sentiment = "😊 Positive" if prediction == 1 else "😞 Negative"
         st.success(f"Predicted Sentiment: **{sentiment}**")
+
